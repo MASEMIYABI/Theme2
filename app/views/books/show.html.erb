@@ -30,9 +30,18 @@
             </td>
 
             <td>コメント数：<%= @book.book_comments.count %></td>
-              <% render 'favorites/favorite-btn',book: @book %>
+            <td class="favorite-btn">
+              <%= render 'favorites/favorite-btn',book: @book %>
+            </td>
+            
             </tr>
             <% render 'book_comments/book_comments',book: @book, book_comment: @book_comment %>
+        <div class="new-comment">
+   　　       <%= form_with model:[@book, @book_comment],local:true do |f| %>
+   　　      <%= f.text_area :comment, rows:'7' %>
+           <%= f.submit "送信" %>
+          <% end %>
+        </div>
       </table>
     </div>
   </div>
